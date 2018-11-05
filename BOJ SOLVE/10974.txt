@@ -1,0 +1,40 @@
+#define _CRT_SECURE_NO_WARNINGS 
+#include <bits/stdc++.h>
+using namespace std;
+int n;
+int a[10];
+int res[10];
+bool check[10];
+void f(int pos)
+{
+	if (pos == n + 1)
+	{
+		for (int i = 1; i <= n; i++)
+		{
+			printf("%d ", res[i]);
+		}
+		printf("\n");
+		return;
+	}
+	for (int i = 1; i <= n; i++)
+	{
+		if (!check[i])
+		{
+			check[i] = true;
+			res[pos] = a[i];
+			f(pos + 1);
+			check[i] = false;
+		}
+	}
+}
+int main() {
+	scanf("%d", &n);
+	for (int i = 1; i <= n; i++)
+	{
+		a[i] = i;
+		check[i] = false;
+	}
+	f(1);
+	system("pause");
+	return 0;
+}

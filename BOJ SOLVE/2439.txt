@@ -1,0 +1,35 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int i, j, k, l, n;
+	scanf("%d", &n);
+	for (i = n; i >= 1; i--) 
+	{
+		for (j = 1; j < i; j++)
+		{
+			printf(" ");
+			if (i-1 == j)
+			{
+				for (k = 1; k <= n - j; k++)
+				{
+					printf("*");
+				}
+				printf("\n");
+			}
+		}
+		if (i == 1)
+		{
+			for (l = 1; l <= n; l++)
+			{
+				printf("*");
+			}
+		}		
+	}
+
+
+	system("pause");
+	return 0;
+}

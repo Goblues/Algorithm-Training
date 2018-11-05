@@ -1,0 +1,21 @@
+#define _CRT_SECURE_NO_WARNINGS 
+#include <bits/stdc++.h>
+using namespace std;
+vector<pair<int, int>> num;
+int x[100001];
+int y[100001];
+char z[100001][101];
+int main() {
+	int n;
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%d %s", &x[i], &z[i]);
+		num.push_back(pair<int, int>(x[i], i));
+	}
+	sort(num.begin(), num.end());
+	for (int i = 0; i < n; i++)
+		printf("%d %s\n", num[i].first, z[num[i].second]);
+	system("pause");
+	return 0;
+}

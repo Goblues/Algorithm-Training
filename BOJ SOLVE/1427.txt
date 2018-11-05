@@ -1,0 +1,34 @@
+#define _CRT_SECURE_NO_WARNINGS 
+#include <bits/stdc++.h>
+using namespace std;
+
+char str[100000001];
+int num[1001];
+
+int main() 
+{
+	int temp, strlength;
+	scanf("%s", str);
+	strlength = strlen(str);
+	for (int i = 0; i < strlength; i++)
+	{
+		num[i] = str[i] - '0';
+	}
+	for (int i = 0; i < strlength; i++)
+	{
+		for (int j = 0; j < (strlength - i - 1); j++)
+		{
+			if (num[j] < num[j + 1]) 
+			{
+				temp = num[j];
+				num[j] = num[j + 1];
+				num[j + 1] = temp;
+			}
+		}
+	}
+	for (int i = 0; i < strlength; i++)
+		printf("%d", num[i]);
+	system("pause");
+	return 0;
+}
+

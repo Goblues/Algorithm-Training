@@ -1,0 +1,57 @@
+#define _CRT_SECURE_NO_WARNINGS 
+#include <bits/stdc++.h>
+using namespace std;
+int num[1000001];
+int cnt[8001];
+int main() 
+{
+	int n, maxnum, temp;
+	int cntnum = 0;
+	double sum = 0;
+	int index = 0;
+	int max = 0;
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++)
+	{
+		scanf(" %d", &num[i]);
+		sum = sum + num[i];
+		cnt[num[i] + 4000]++;
+	}
+	for (int i = 0; i < 8001; i++)
+	{
+		if (max < cnt[i])
+		{
+			max = cnt[i];
+			temp = i;
+		}
+	}
+	for (int i = 0; i < 8001; i++)
+	{
+		if (cnt[i] == max)
+		{
+			cntnum++;
+			if (cntnum == 2)
+			{
+				maxnum = i - 4000;
+				break;
+			}
+		}
+	}
+	if (cntnum == 1)
+	{
+		maxnum = temp - 4000;
+	}
+	sort(num, num + n);
+	double avg = sum / n;
+	int mid = n / 2;
+	int midnum = num[mid];
+	int compare = num[n - 1] - num[0];
+
+	printf("%d\n", (int)floor(avg + 0.5));
+	printf("%d\n", midnum);
+	printf("%d\n", maxnum);
+	printf("%d\n", compare);	
+	system("pause");
+	return 0;
+}
+

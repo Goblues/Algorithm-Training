@@ -1,0 +1,35 @@
+#define _CRT_SECURE_NO_WARNINGS 
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+	int temp;
+	int num[4];
+	char str[10];
+	scanf("%d %d %d\n", &num[0], &num[1], &num[2]);
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < (3 - i); j++) {
+			if (num[j] > num[j + 1] && j != 3 - (i + 1)) {
+				temp = num[j];
+				num[j] = num[j + 1];
+				num[j + 1] = temp;
+			}
+		}
+	}
+	scanf("%s\n", str);
+	if (!strcmp(str, "ABC"))
+		printf("%d %d %d\n", num[0], num[1], num[2]);
+	else if (!strcmp(str, "ACB"))
+		printf("%d %d %d\n", num[0], num[2], num[1]);
+	else if (!strcmp(str, "BAC"))
+		printf("%d %d %d\n", num[1], num[0], num[2]);
+	else if (!strcmp(str, "BCA"))
+		printf("%d %d %d\n", num[1], num[2], num[0]);
+	else if (!strcmp(str, "CAB"))
+		printf("%d %d %d\n", num[2], num[0], num[1]);
+	else if (!strcmp(str, "CBA"))
+		printf("%d %d %d\n", num[2], num[1], num[0]);
+
+	system("pause");
+	return 0;
+}     
+

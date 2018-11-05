@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+struct Score {
+	string name;
+	int ksc;
+	int esc;
+	int msc;
+};
+bool cmp(Score a, Score b)
+{
+	if (a.ksc > b.ksc)
+		return true;
+	else if (a.ksc == b.ksc)
+	{
+		if (a.esc < b.esc)
+			return true;
+		else if (a.esc == b.esc)
+		{
+			if (a.msc > b.msc)
+				return true;
+			else if (a.msc == b.msc)
+				return a.name < b.name;
+			else
+				return false;
+		}
+		else
+			return false;
+	}
+	else
+		return false;
+}
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	int n;
+	cin >> n;
+	vector<Score> a(n);
+	for (int i = 0; i < n; i++)
+		cin >> a[i].name >> a[i].ksc >> a[i].esc >> a[i].msc;
+	sort(a.begin(), a.end(), cmp);
+	for (int i = 0; i < n; i++)
+		cout << a[i].name << "\n";
+	system("pause");
+	return 0;
+}

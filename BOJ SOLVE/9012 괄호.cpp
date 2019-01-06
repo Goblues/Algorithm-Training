@@ -2,20 +2,52 @@
 
 using namespace std;
 char a[51];
+stack<char> s;
+int n;
 int main()
 {
-	stack<char> s;
-	int n;
-
 	scanf("%d", &n);
 
-	for (int i = 0; i < n; i++)
+	while(n--)
 	{
 		scanf("%s", a);
+		for (int i = 0; i < strlen(a); i++)
+		{
+			if (a[i] == '(')
+			{
+				s.push(a[i]);
+			}
+			else if (a[i] == ')')
+			{
+				if (s.empty())
+				{
+					s.push(a[i]);
+					break;
+				}
+				else
+				{
+					s.pop();
+				}
+			}
+			else
+			{
+				break;
+			}
+		}
+
+		if (s.empty())
+		{
+			printf("YES\n");
+		}
+		else
+		{
+			printf("NO\n");
+		}
+
+		while(!s.empty())
+		{
+			s.pop();
+		}
 	}
-
-	printf("%s", a);
-
-
 	return 0;
 }

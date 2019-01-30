@@ -1,66 +1,16 @@
 #include <bits/stdc++.h>
-
-using namespace std;
-int n;
-int cnt = 0;
-int sum = 0;
-int a[30];
-bool check[30];
-int res[30];
-void f(int pos)
+struct game
 {
-	if (pos == n)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			sum = sum + res[i];
-		}
-
-		if (sum == 0)
-		{
-			cnt++;
-			return;
-		}
-		else if (sum == 360)
-		{
-			cnt++;
-			return;
-		}
-	}
-
-	for (int i = pos; i < n; i++)
-	{
-		if (!check[i])
-		{
-			check[i] = true;
-			res[pos] = a[i];
-			f(pos + 1);
-			check[i] = false;
-			sum = 0;
-		}
-	}
-}
-
+	char name[7];
+	int R1, R2, R3;
+};
 int main()
 {
-	scanf("%d", &n);
-	for (int i = 0; i < n; i++)
-	{
-		scanf("%d", &a[i]);
-		a[i+n] = -a[i];
-		check[i] = false;
-	}
-
-	f(0);
-
-	if (cnt == 0)
-	{
-		printf("NO");
-	}
-	else
-	{
-		printf("YES");
-	}
-	
-	return 0;
+	struct game player;
+	double avg;
+	scanf("%s", player.name);
+	scanf("%d %d %d", &player.R1, &player.R2, &player.R3);
+	avg = (double) (player.R1 + player.R2 + player.R3) / 3;
+	printf("%s 선수의 게임 성적 평균 %.1lf점\n", player.name, avg);	
+	return 0;	
 }

@@ -3,14 +3,13 @@ using namespace std;
 int num[10];
 int main()
 {
-	double a, b, c;
 	scanf("%d %d", &num[0], &num[1]);
 	scanf("%d %d", &num[2], &num[3]);
 	scanf("%d %d", &num[4], &num[5]);
-	a = (double)num[0]/num[1];
-	b = (double)num[2]/num[3];
-	c = (double)num[4]/num[5];
-	if (a == b && b == c && c == a)
+	double first, second;
+	first = (double)(num[3]-num[1])/(num[2]-num[0]);
+	second = (double)(num[5]-num[3])/(num[4]-num[2]);
+	if (abs(first) == abs(second))
 	{
 		printf("WHERE IS MY CHICKEN?");
 	}

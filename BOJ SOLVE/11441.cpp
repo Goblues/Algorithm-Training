@@ -3,20 +3,21 @@ using namespace std;
 int num[100001];
 int main()
 {
-	int n, m;
-	int a, b;
-	int sum = 0;
-	scanf("%d", &n);
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	int n, m, a, b, sum = 0;
+	cin >> n;
 	for (int i = 1; i <= n; i++)
-		scanf("%d ", &num[i]);
-	scanf("%d", &m);
+	{
+		cin >> a;
+		sum += a;
+		num[i] = sum; 
+	}
+	cin >> m;
 	for (int i = 0; i < m; i++)
 	{
-		scanf("%d %d", &a, &b);
-		for (int j = a; j <= b; j++)
-			sum += num[j];
-		printf("%d\n", sum);
-		sum = 0;
+		cin >> a >> b;
+		cout << num[b]-num[a-1] << '\n';
 	}
 	return 0;
 }
